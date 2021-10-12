@@ -1,0 +1,104 @@
+#include <cstdlib>
+#include <iostream>
+#include<conio.h>
+#define N 7
+using namespace std;
+void INSERT(void);
+void DELETE(void);
+void CETAKLAYAR(void);
+void Inisialisasi(void);
+int PIL,F,R,COUNTER,j;
+bool ulang;
+char PILIHAN[1],HURUF;
+char Q[N];
+using namespace std;
+int main(int argc, char *argv[])
+{
+ Inisialisasi();
+ do
+ {
+cout<<" ADITYA RIZQIANDRI SAPUTRA"<<endl;
+cout<<" 201011401049"<<endl;
+cout<<"=============="<<endl;
+cout<<" ANIMASI QUEUE"<<endl;
+cout<<"=============="<<endl;
+cout<<"1. INSERT"<<endl;
+cout<<"2. DELETE"<<endl;
+cout<<"3. CETAK QUEUE"<<endl;
+cout<<"4. QUIT"<<endl<<endl;
+cout<<"PILIHAN : "; cin>>PILIHAN;
+PIL=atoi(PILIHAN);
+switch (PIL)
+{
+case 1:
+ INSERT();
+ break;
+ case 2:
+ DELETE();
+ break;
+ case 3:
+ CETAKLAYAR();
+ break;
+ default:
+ cout<<"TERIMA KASIH"<<endl; 
+ break;
+ }
+cout<<"Press any key to continue"<<endl;
+getch();
+system("cls");
+ }
+ while (PIL<4);
+ system("PAUSE");
+ return EXIT_SUCCESS;
+}
+void INSERT(void)
+{
+if(COUNTER<N)
+ {
+ cout<<endl<<"MASUKKAN 1 HURUF : ";
+cin>>HURUF;
+R=(R+1)%N;
+Q[R]=HURUF;
+COUNTER++;
+ }
+ else
+cout<<"Antrian Penuh"<<endl;
+}
+void CETAKLAYAR(void)
+{
+ if(COUNTER>0)
+ {
+ j=F;
+ ulang=true;
+ while(ulang)
+ {
+ cout<<"Q["<<j<<"] = "<<Q[j]<<endl;
+j=(j+1)%N;
+	if(j==R+1)
+	{
+ 		ulang=false;
+ 	}
+ }
+ }
+ else
+cout<<"QUEUE Kosong"<<endl;
+}
+void DELETE(void)
+{
+ if(COUNTER>0)
+ {
+HURUF=Q[F];
+Q[F]='\0';
+cout<<"Data yang diambil : "<<HURUF<<endl;
+F=(F+1)%N;
+COUNTER--;
+ }
+ else	
+ cout<<"Antrian Kosong"<<endl;
+}
+void Inisialisasi(void)
+{
+ F=0;
+ R=-1;
+ COUNTER=0;
+}
